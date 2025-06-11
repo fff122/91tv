@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- The title will be set dynamically by JavaScript -->
-    <title>О нас - 91TV.NEWS</title>
+    <title>91TV.NEWS: Pioneering the Future of AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -123,7 +122,6 @@
 </head>
 <body class="antialiased">
 
-    <!-- 导航栏 -->
     <header class="header sticky top-0 z-50 w-full border-b border-gray-700">
         <div class="container mx-auto flex h-16 items-center justify-between px-6">
             <a href="#" class="text-xl lg:text-2xl font-bold text-white">
@@ -136,7 +134,6 @@
                 <a href="#careers" class="header-link" data-lang-key="nav_careers">Карьера</a>
             </nav>
             <div class="flex items-center space-x-4">
-                <!-- Language Switcher -->
                 <div id="lang-switcher" class="relative">
                     <button id="lang-switcher-button" class="flex items-center text-gray-400 hover:text-white transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.002 6.002 0 0111.336 0H4.332zM15.668 9.973a6.003 6.003 0 01-11.336 0h11.336z" clip-rule="evenodd" /></svg>
@@ -153,13 +150,10 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="container mx-auto px-6 py-12 md:py-20">
         
-        <!-- Hero Section -->
         <section class="text-center max-w-4xl mx-auto fade-in-section"><h1 class="text-4xl md:text-6xl font-bold tracking-tighter text-white" data-lang-key="hero_title">Инновации определяют будущее</h1><p class="mt-6 text-lg text-gray-400" data-lang-key="hero_subtitle">Мы стремимся предоставлять выдающиеся решения для цифровой трансформации глобальным предприятиям с помощью прорывных технологий.</p></section>
 
-        <!-- Journey Section -->
         <section id="journey" class="mt-20 md:mt-32 fade-in-section">
             <div class="text-center max-w-3xl mx-auto"><h2 class="text-3xl font-bold tracking-tight text-white" data-lang-key="journey_title">Наш путь</h2><p class="mt-4 text-lg text-gray-400" data-lang-key="journey_subtitle">От концепции до лидера отрасли: история наших инноваций.</p></div>
             <div class="mt-12 max-w-3xl mx-auto">
@@ -170,7 +164,6 @@
             </div>
         </section>
 
-        <!-- Our Products Section -->
         <section id="products" class="mt-20 md:mt-32 fade-in-section">
             <div class="text-center max-w-3xl mx-auto"><h2 class="text-3xl font-bold tracking-tight text-white" data-lang-key="products_title">Наши флагманские продукты</h2><p class="mt-4 text-lg text-gray-400" data-lang-key="products_subtitle">Инструменты, которые меняют правила игры.</p></div>
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -185,19 +178,16 @@
             </div>
         </section>
         
-        <!-- Benchmarks Section -->
         <section id="benchmarks" class="mt-20 md:mt-32 fade-in-section">
             <div class="text-center max-w-3xl mx-auto"><h2 class="text-3xl font-bold tracking-tight text-white" data-lang-key="benchmarks_title">Aether-o1: Переопределение стандартов ИИ</h2><p class="mt-4 text-lg text-gray-400" data-lang-key="benchmarks_subtitle">Наша последняя модель, Aether-o1, стабильно превосходит ведущие отраслевые модели в ключевых областях, демонстрируя превосходные возможности в рассуждении, креативности и технических навыках.</p></div>
             <div id="benchmarks-grid" class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8"></div>
         </section>
 
-        <!-- Leadership Team Section -->
         <section class="mt-20 md:mt-32 fade-in-section">
             <div class="text-center max-w-3xl mx-auto"><h2 class="text-3xl font-bold tracking-tight text-white" data-lang-key="team_title">Руководство</h2><p class="mt-4 text-lg text-gray-400" data-lang-key="team_subtitle">Состоит из группы страстных и дальновидных отраслевых экспертов.</p></div>
             <div id="team-grid" class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
         </section>
 
-        <!-- Careers Section -->
         <section id="careers" class="mt-20 md:mt-32 fade-in-section">
             <div class="max-w-4xl mx-auto card p-8 md:p-12 text-center">
                 <h2 class="text-3xl font-bold tracking-tight text-white" data-lang-key="careers_title">Присоединяйтесь к нам</h2>
@@ -226,7 +216,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="border-t border-gray-800 mt-20 md:mt-32"><div class="container mx-auto px-6 py-8"><div class="flex flex-col md:flex-row justify-between items-center text-sm"><p class="text-gray-500">&copy; 2025 91TV.NEWS. All Rights Reserved.</p><div class="flex items-center space-x-6 mt-4 md:mt-0"><a href="#careers" class="header-link" data-lang-key="footer_careers">Карьера</a><a href="#" class="header-link" data-lang-key="footer_privacy">Политика</a><a href="#" class="header-link" data-lang-key="footer_press">Пресса</a></div></div></div></footer>
 
     <script>
@@ -235,7 +224,7 @@
 
             const translations = {
                 zh: {
-                    page_title: "关于我们 - 91TV.NEWS",
+                    page_title: "关于我们 - 91TV.NEWS: 开创人工智能的未来",
                     nav_journey: "发展历程", nav_products: "产品", nav_benchmarks: "性能基准", nav_careers: "招贤纳士", nav_contact: "联系我们",
                     hero_title: "创新驱动未来", hero_subtitle: "我们致力于通过颠覆性技术，为全球企业提供卓越的数字化转型解决方案。",
                     journey_title: "我们的发展历程", journey_subtitle: "从概念到行业领先：我们的创新之路。",
@@ -265,7 +254,7 @@
                     footer_careers: "职业机会", footer_privacy: "隐私政策", footer_press: "媒体中心",
                 },
                 en: {
-                    page_title: "About Us - 91TV.NEWS",
+                    page_title: "About Us - 91TV.NEWS: Pioneering the Future of AI",
                     nav_journey: "Our Journey", nav_products: "Products", nav_benchmarks: "Benchmarks", nav_careers: "Careers", nav_contact: "Contact Us",
                     hero_title: "Innovation Drives the Future", hero_subtitle: "We are dedicated to providing outstanding digital transformation solutions for global enterprises through disruptive technology.",
                     journey_title: "Our Journey", journey_subtitle: "From concept to industry leader: our history of innovation.",
@@ -295,7 +284,7 @@
                     footer_careers: "Careers", footer_privacy: "Privacy Policy", footer_press: "Press",
                 },
                 ru: {
-                    page_title: "О нас - 91TV.NEWS",
+                    page_title: "О нас - 91TV.NEWS: Создавая будущее ИИ",
                     nav_journey: "Путь", nav_products: "Продукты", nav_benchmarks: "Тесты", nav_careers: "Карьера", nav_contact: "Контакты",
                     hero_title: "Инновации определяют будущее", hero_subtitle: "Мы стремимся предоставлять выдающиеся решения для цифровой трансформации глобальным предприятиям с помощью прорывных технологий.",
                     journey_title: "Наш путь", journey_subtitle: "От концепции до лидера отрасли: история наших инноваций.",
@@ -435,4 +424,4 @@
         });
     </script>
 </body>
-</ht
+</html>
