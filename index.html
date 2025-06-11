@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>91TV.NEWS - AI-решения для предприятий</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* New Professional Light Theme */
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background-color: #ffffff; 
+            color: #111827;
+        }
+        .header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .header-link {
+            color: #4B5563;
+            transition: color 0.3s ease;
+        }
+        .header-link:hover {
+            color: #0052FF;
+        }
+        .primary-button {
+            background-color: #0052FF; /* Professional Blue */
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+        .primary-button:hover {
+            background-color: #0045D1;
+        }
+        .secondary-button {
+             color: #0052FF;
+             background-color: transparent;
+             border: 1px solid #0052FF;
+        }
+        .secondary-button:hover {
+             background-color: #F0F5FF;
+        }
+        .accent-blue {
+            color: #0052FF;
+        }
+        .section-bg {
+             background-color: #F7F8FA; /* Light gray for section backgrounds */
+        }
+        .feature-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            border: 1px solid #E5E7EB;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .feature-card .card-content {
+            flex-grow: 1;
+            padding: 2rem;
+        }
+        
+        /* Animation & Language Switcher */
+        .fade-in-section { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+        .dropdown-menu { transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; z-index: 60; }
+
+        /* Timeline Styles */
+        .timeline-item { position: relative; padding-left: 2.5rem; padding-bottom: 2.5rem; border-left: 2px solid #E5E7EB; }
+        .timeline-item:last-child { border-left: 2px solid transparent; padding-bottom: 0; }
+        .timeline-dot { position: absolute; left: -0.5rem; top: 0.25rem; height: 1rem; width: 1rem; background-color: #0052FF; border-radius: 9999px; }
+        
+        /* Careers Tab styles */
+        .job-tab { cursor: pointer; padding: 0.75rem 1rem; transition: all 0.3s ease; border-bottom: 2px solid transparent; color: #6B7280; }
+        .job-tab.active { color: #0052FF; border-bottom-color: #0052FF; font-weight: 600; }
+
+        .team-member-card {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- 导航栏 -->
+    <header class="header sticky top-0 z-50 w-full border-b border-gray-200">
+        <div class="container mx-auto flex h-16 items-center justify-between px-6">
+            <a href="#" class="text-xl lg:text-2xl font-bold text-gray-900">91<span class="accent-blue">TV.NEWS</span></a>
+            <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium">
+                <a href="#products" class="header-link" data-lang-key="nav_products">Продукты</a>
+                <a href="#journey" class="header-link" data-lang-key="nav_journey">Путь</a>
+                <a href="#careers" class="header-link" data-lang-key="nav_careers">Карьера</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <div id="lang-switcher" class="relative">
+                    <button id="lang-switcher-button" class="flex items-center text-gray-600 hover:text-gray-900 transition-colors">
+                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.002 6.002 0 0111.336 0H4.332zM15.668 9.973a6.003 6.003 0 01-11.336 0h11.336z" clip-rule="evenodd" /></svg>
+                        <span id="current-lang-text" class="ml-2 text-sm font-medium">RU</span>
+                    </button>
+                    <ul id="lang-dropdown-menu" class="dropdown-menu absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-md shadow-lg hidden opacity-0 transform scale-95">
+                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="zh">简体中文</a></li>
+                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="en">English</a></li>
+                        <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="ru">Русский</a></li>
+                    </ul>
+                </div>
+                <a href="#" class="primary-button rounded-md px-5 py-2 text-sm font-semibold" data-lang-key="nav_contact">Запросить демо</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Hero Section -->
+        <section class="text-center py-20 md:py-32 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tighter" data-lang-key="hero_title">Инновации определяют будущее</h1>
+                <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-600" data-lang-key="hero_subtitle">Мы предоставляем передовые AI-решения, которые позволяют предприятиям по всему миру раскрыть свой истинный потенциал.</p>
+                <div class="mt-8 flex justify-center gap-4">
+                     <a href="#products" class="primary-button rounded-md px-6 py-3 text-base font-semibold" data-lang-key="hero_cta1">Изучить продукты</a>
+                     <a href="#careers" class="secondary-button rounded-md px-6 py-3 text-base font-semibold" data-lang-key="hero_cta2">Присоединиться к нам</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="py-20 md:py-32 section-bg fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto"><h2 class="text-3xl md:text-4xl font-bold tracking-tight" data-lang-key="products_title">Единая платформа для всех ваших потребностей в ИИ</h2><p class="mt-4 text-lg text-gray-600" data-lang-key="products_subtitle">Наши продукты, основанные на ядре **Aether-o1 Engine**, разработаны для решения самых сложных задач.</p></div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="feature-card">
+                        <img src="https://placehold.co/600x400/F0F5FF/0052FF?text=QuantumLeap+AI" alt="QuantumLeap AI Placeholder" class="rounded-t-lg">
+                        <div class="card-content">
+                            <h3 class="text-xl font-bold">QuantumLeap AI</h3>
+                            <p class="mt-2 text-gray-600" data-lang-key="product1_text">Платформа предиктивной аналитики, которая преобразует необработанные данные в стратегические бизнес-идеи, помогая прогнозировать рыночные тенденции и оптимизировать операции.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <img src="https://placehold.co/600x400/F0F5FF/0052FF?text=Synapse+X" alt="Synapse X Placeholder" class="rounded-t-lg">
+                         <div class="card-content">
+                            <h3 class="text-xl font-bold">Synapse X</h3>
+                            <p class="mt-2 text-gray-600" data-lang-key="product2_text">Интегрированная платформа для автоматизации рабочих процессов, которая объединяет все ваши бизнес-приложения, устраняет ручные задачи и повышает эффективность.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey Section -->
+        <section id="journey" class="py-20 md:py-32 fade-in-section">
+             <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto"><h2 class="text-3xl md:text-4xl font-bold tracking-tight" data-lang-key="journey_title">Наш путь</h2><p class="mt-4 text-lg text-gray-600" data-lang-key="journey_subtitle">От концепции до лидера отрасли: история наших инноваций.</p></div>
+                <div class="mt-16 max-w-3xl mx-auto">
+                     <div class="timeline-item"><div class="timeline-dot"></div><time class="mb-1 text-sm font-semibold leading-none text-gray-500">2022</time><h3 class="text-lg font-bold text-gray-900" data-lang-key="journey1_title">Генезис: Запуск Aether-v1</h3><p class="text-base font-normal text-gray-600" data-lang-key="journey1_text">Мы выпустили нашу первую основополагающую модель, заложив основу для будущего развития ИИ-рассуждений.</p></div>
+                     <div class="timeline-item"><div class="timeline-dot"></div><time class="mb-1 text-sm font-semibold leading-none text-gray-500">2023</time><h3 class="text-lg font-bold text-gray-900" data-lang-key="journey2_title">Квантовый скачок: Релиз Aether-v2</h3><p class="text-base font-normal text-gray-600" data-lang-key="journey2_text">v2 значительно улучшил возможности рассуждения и был интегрирован в наш флагманский продукт QuantumLeap AI.</p></div>
+                     <div class="timeline-item"><div class="timeline-dot"></div><time class="mb-1 text-sm font-semibold leading-none text-gray-500">2024</time><h3 class="text-lg font-bold text-gray-900" data-lang-key="journey3_title">Интеграция с экосистемой: Synapse X</h3><p class="text-base font-normal text-gray-600" data-lang-key="journey3_text">Aether Engine стал ядром Synapse X, расширяя возможности автоматизации для корпоративных клиентов.</p></div>
+                     <div class="timeline-item"><div class="timeline-dot"></div><time class="mb-1 text-sm font-semibold leading-none text-gray-500">2025</time><h3 class="text-lg font-bold text-gray-900" data-lang-key="journey4_title">Новая эра: Представляем Aether-o1</h3><p class="text-base font-normal text-gray-600" data-lang-key="journey4_text">Наша последняя модель, Aether-o1, устанавливает новые отраслевые стандарты в мультимодальных возможностях и производительности.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Careers Section -->
+        <section id="careers" class="py-20 md:py-32 section-bg fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto"><h2 class="text-3xl md:text-4xl font-bold tracking-tight" data-lang-key="careers_title">Присоединяйтесь к нам</h2><p class="mt-4 text-lg text-gray-600" data-lang-key="careers_subtitle">Мы всегда в поиске талантливых людей, которые разделяют нашу страсть к инновациям. Станьте частью команды, которая формирует будущее.</p></div>
+                <div class="mt-12 max-w-4xl mx-auto">
+                    <div class="border-b border-gray-300"><div id="job-tabs" class="flex -mb-px space-x-6 overflow-x-auto"></div></div>
+                    <div id="job-content" class="mt-8 text-left"></div>
+                </div>
+                <p class="mt-10 text-center text-gray-600" data-lang-key="careers_apply">Заинтересованы? Отправьте свое резюме по адресу: <a href="mailto:careers@91tv.news" class="accent-blue font-medium hover:underline">careers@91tv.news</a></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white"><div class="container mx-auto py-12 px-6"><div class="grid grid-cols-2 md:grid-cols-4 gap-8"><div><h3 class="text-sm font-semibold leading-6">Решения</h3><ul class="mt-6 space-y-4"><li data-lang-key="footer_sol1">Аналитика</li><li data-lang-key="footer_sol2">Автоматизация</li></ul></div><div><h3 class="text-sm font-semibold leading-6">Компания</h3><ul class="mt-6 space-y-4"><li data-lang-key="footer_comp1">О нас</li><li data-lang-key="footer_comp2">Карьера</li></ul></div><div><h3 class="text-sm font-semibold leading-6">Ресурсы</h3><ul class="mt-6 space-y-4"><li data-lang-key="footer_res1">Блог</li><li data-lang-key="footer_res2">Документация</li></ul></div><div><h3 class="text-sm font-semibold leading-6">Правовая информация</h3><ul class="mt-6 space-y-4"><li data-lang-key="footer_legal1">Конфиденциальность</li><li data-lang-key="footer_legal2">Условия</li></ul></div></div><div class="mt-12 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center"><p class="text-xs leading-5 text-gray-400">&copy; 2025 91TV.NEWS. All Rights Reserved.</p></div></div></footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let currentLang = 'ru'; // Default language
+
+            const translations = {
+                zh: {
+                    page_title: "关于我们 - 91TV.NEWS",
+                    nav_solutions: "解决方案", nav_products: "产品", nav_journey: "发展历程", nav_careers: "招贤纳士", nav_contact: "请求演示",
+                    hero_title: "创新驱动未来", hero_subtitle: "我们提供尖端的AI解决方案，赋能全球企业释放其真正潜力。", hero_cta1: "探索产品", hero_cta2: "加入我们",
+                    trusted_by: "深受全球领先公司信赖",
+                    products_title: "满足您所有AI需求的一体化平台", products_subtitle: "我们的产品由 **Aether-o1 Engine** 内核驱动，专为解决最复杂的挑战而设计。",
+                    product1_text: "一款预测性分析平台，可将原始数据转化为战略性商业洞察，帮助您预测市场趋势并优化运营。", product2_text: "一个集成式工作流自动化平台，连接您所有的业务应用，消除手动任务并提高效率。",
+                    testimonial_text: "“91TV.NEWS彻底改变了我们分析数据的方式。他们的QuantumLeap平台使我们的预测时间缩短了50%，并让我们能做出更明智的决策。他们是真正的合作伙伴，而不仅仅是供应商。”",
+                    testimonial_author: "王伟", testimonial_role: "Nova Dynamics 首席技术官",
+                    journey_title: "我们的发展历程", journey_subtitle: "从概念到行业领先：我们的创新之路。",
+                    journey1_title: "创世：Aether-v1 发布", journey1_text: "我们发布了第一代基础模型，为未来的人工智能推理奠定了基础。",
+                    journey2_title: "量子飞跃：Aether-v2 问世", journey2_text: "v2版本显著提升了推理能力，并成功集成到我们的旗舰产品 QuantumLeap AI 中。",
+                    journey3_title: "生态融合：Synapse X", journey3_text: "Aether Engine 成为 Synapse X 的核心，为企业客户赋能自动化能力。",
+                    journey4_title: "新纪元：推出 Aether-o1", journey4_text: "我们的最新模型 Aether-o1，在多模态能力和性能方面设立了新的行业标杆。",
+                    careers_title: "加入我们", careers_subtitle: "我们一直在寻找与我们一样对创新充满热情的杰出人才。加入我们，共同塑造未来。",
+                    jobs: [
+                        { title: "大语言模型（LLM）工程师", responsibilities_title: "岗位职责:", qualifications_title: "任职资格:", responsibilities: "<li>设计、训练和优化大规模语言模型。</li><li>研发新算法和架构以提升模型性能。</li><li>与产品团队合作，将模型部署到生产系统中。</li>", qualifications: "<li>计算机科学、人工智能或相关领域的博士或硕士学位。</li><li>拥有使用深度学习框架（如PyTorch, TensorFlow）的实践经验。</li><li>对Transformer架构及其变体有深入理解。</li>" },
+                        { title: "AI研究科学家", responsibilities_title: "岗位职责:", qualifications_title: "任职资格:", responsibilities: "<li>开展基础和应用研究，探索AI的新领域。</li><li>在顶级会议和期刊上发表研究成果。</li><li>指导初级研究人员，并与学术界合作。</li>", qualifications: "<li>相关领域的博士学位，并有出色的发表记录。</li><li>在机器学习、自然语言处理或计算机视觉方面有深厚的专业知识。</li><li>熟练掌握Python及相关的科学计算库。</li>" },
+                        { title: "云基础架构工程师", responsibilities_title: "岗位职责:", qualifications_title: "任职资格:", responsibilities: "<li>设计、构建和维护我们用于大规模AI训练和推理的云平台。</li><li>确保平台的高可用性、安全性和可扩展性。</li><li>开发自动化工具以简化部署和运维流程。</li>", qualifications: "<li>拥有在AWS, GCP或Azure等主要云平台上构建基础架构的经验。</li><li>熟练掌握容器化技术（Docker, Kubernetes）。</li><li>具备基础设施即代码（IaC）工具（如Terraform, Ansible）的经验。</li>" }
+                    ],
+                    careers_apply: "感兴趣吗？请将您的简历发送至：<a href='mailto:careers@91tv.news' class='accent-blue font-medium hover:underline'>careers@91tv.news</a>",
+                    footer_sol1: "分析", footer_sol2: "自动化", footer_comp1: "关于我们", footer_comp2: "招贤纳士", footer_res1: "博客", footer_res2: "文档", footer_legal1: "隐私", footer_legal2: "条款",
+                },
+                en: {
+                    page_title: "About Us - 91TV.NEWS",
+                    nav_solutions: "Solutions", nav_products: "Products", nav_journey: "Journey", nav_careers: "Careers", nav_contact: "Request a Demo",
+                    hero_title: "Innovation Drives the Future", hero_subtitle: "We provide cutting-edge AI solutions that empower global enterprises to unlock their true potential.", hero_cta1: "Explore Products", hero_cta2: "Join Our Team",
+                    trusted_by: "Trusted by the world’s leading companies",
+                    products_title: "A Unified Platform for All Your AI Needs", products_subtitle: "Powered by our core **Aether-o1 Engine**, our products are designed to solve the most complex challenges.",
+                    product1_text: "A predictive analytics platform that transforms raw data into strategic business insights, helping you forecast market trends and optimize operations.", product2_text: "An integrated workflow automation platform that connects all your business applications, eliminating manual tasks and boosting efficiency.",
+                    testimonial_text: "\"91TV.NEWS has completely transformed how we approach data. Their QuantumLeap platform cut our forecasting time by 50% and enabled smarter decisions. Truly a partner, not just a vendor.\"",
+                    testimonial_author: "Alex Johnson", testimonial_role: "CTO at Nova Dynamics",
+                    journey_title: "Our Journey", journey_subtitle: "From concept to industry leader: our history of innovation.",
+                    journey1_title: "Genesis: Aether-v1 Launch", journey1_text: "We released our first foundational model, setting the stage for the future of AI reasoning.",
+                    journey2_title: "Quantum Leap: Aether-v2 Release", journey2_text: "v2 significantly improved reasoning capabilities and was integrated into our flagship product, QuantumLeap AI.",
+                    journey3_title: "Ecosystem Integration: Synapse X", journey3_text: "The Aether Engine became the core of Synapse X, empowering enterprise customers with automation capabilities.",
+                    journey4_title: "New Era: Introducing Aether-o1", journey4_text: "Our latest model, Aether-o1, sets new industry standards in multimodal capabilities and performance.",
+                    careers_title: "Join Us", careers_subtitle: "We are always looking for exceptional talent who share our passion for innovation. Be part of a team that is shaping the future.",
+                    jobs: [
+                        { title: "LLM Engineer", responsibilities_title: "Responsibilities:", qualifications_title: "Qualifications:", responsibilities: "<li>Design, train, and optimize large-scale language models.</li><li>Develop novel algorithms and architectures to improve model performance.</li><li>Collaborate with product teams to integrate models into production systems.</li>", qualifications: "<li>PhD or MS in Computer Science, AI, or a related field.</li><li>Proven experience with deep learning frameworks (e.g., PyTorch, TensorFlow).</li><li>Deep understanding of Transformer architectures and their variants.</li>" },
+                        { title: "AI Research Scientist", responsibilities_title: "Responsibilities:", qualifications_title: "Qualifications:", responsibilities: "<li>Conduct fundamental and applied research to push the frontiers of AI.</li><li>Publish findings in top-tier conferences and journals.</li><li>Mentor junior researchers and collaborate with academia.</li>", qualifications: "<li>PhD in a relevant field with a strong publication record.</li><li>Deep expertise in ML, NLP, or Computer Vision.</li><li>Proficiency in Python and associated scientific computing libraries.</li>" },
+                        { title: "Cloud Infrastructure Engineer", responsibilities_title: "Responsibilities:", qualifications_title: "Qualifications:", responsibilities: "<li>Design, build, and maintain our cloud platform for large-scale AI training and inference.</li><li>Ensure high availability, security, and scalability of the infrastructure.</li><li>Develop automation tools to streamline deployment and operational processes.</li>", qualifications: "<li>Experience building infrastructure on major cloud platforms (AWS, GCP, Azure).</li><li>Proficiency with containerization technologies (Docker, Kubernetes).</li><li>Experience with Infrastructure as Code (IaC) tools like Terraform or Ansible.</li>" }
+                    ],
+                    careers_apply: "Interested? Send your resume to: <a href='mailto:careers@91tv.news' class='accent-blue font-medium hover:underline'>careers@91tv.news</a>",
+                    footer_sol1: "Analytics", footer_sol2: "Automation", footer_comp1: "About", footer_comp2: "Careers", footer_res1: "Blog", footer_res2: "Docs", footer_legal1: "Privacy", footer_legal2: "Terms",
+                },
+                ru: {
+                    page_title: "О нас - 91TV.NEWS",
+                    nav_solutions: "Решения", nav_products: "Продукты", nav_journey: "Путь", nav_careers: "Карьера", nav_contact: "Запросить демо",
+                    hero_title: "Инновации определяют будущее", hero_subtitle: "Мы предоставляем передовые AI-решения, которые позволяют предприятиям по всему миру раскрыть свой истинный потенциал.", hero_cta1: "Изучить продукты", hero_cta2: "Присоединиться к нам",
+                    trusted_by: "Нам доверяют ведущие мировые компании",
+                    products_title: "Единая платформа для всех ваших потребностей в ИИ", products_subtitle: "Наши продукты, основанные на ядре **Aether-o1 Engine**, разработаны для решения самых сложных задач.",
+                    product1_text: "Платформа предиктивной аналитики, которая преобразует необработанные данные в стратегические бизнес-идеи, помогая прогнозировать рыночные тенденции и оптимизировать операции.", product2_text: "Интегрированная платформа для автоматизации рабочих процессов, которая объединяет все ваши бизнес-приложения, устраняет ручные задачи и повышает эффективность.",
+                    testimonial_text: "“91TV.NEWS полностью изменил наш подход к анализу данных. Их платформа QuantumLeap позволила нам сократить время прогнозирования на 50% и принимать более разумные решения. Это действительно партнер, а не просто поставщик.”",
+                    testimonial_author: "Алексей Иванов", testimonial_role: "Технический директор в 'Nova Dynamics'",
+                    journey_title: "Наш путь", journey_subtitle: "От концепции до лидера отрасли: история наших инноваций.",
+                    journey1_title: "Генезис: Запуск Aether-v1", journey1_text: "Мы выпустили нашу первую основополагающую модель, заложив основу для будущего развития ИИ-рассуждений.",
+                    journey2_title: "Квантовый скачок: Релиз Aether-v2", journey2_text: "v2 значительно улучшил возможности рассуждения и был интегрирован в наш флагманский продукт QuantumLeap AI.",
+                    journey3_title: "Интеграция с экосистемой: Synapse X", journey3_text: "Aether Engine стал ядром Synapse X, расширяя возможности автоматизации для корпоративных клиентов.",
+                    journey4_title: "Новая эра: Представляем Aether-o1", journey4_text: "Наша последняя модель, Aether-o1, устанавливает новые отраслевые стандарты в мультимодальных возможностях и производительности.",
+                    careers_title: "Присоединяйтесь к нам", careers_subtitle: "Мы всегда в поиске талантливых людей, которые разделяют нашу страсть к инновациям. Станьте частью команды, которая формирует будущее.",
+                    jobs: [
+                        { title: "Инженер по большим языковым моделям (LLM)", responsibilities_title: "Обязанности:", qualifications_title: "Квалификация:", responsibilities: "<li>Проектирование, обучение и оптимизация крупномасштабных языковых моделей.</li><li>Разработка новых алгоритмов и архитектур для улучшения производительности моделей.</li><li>Сотрудничество с командами по продуктам для внедрения моделей в производственные системы.</li>", qualifications: "<li>Кандидатская или магистерская степень в области компьютерных наук, ИИ или смежной области.</li><li>Доказанный опыт работы с фреймворками глубокого обучения (например, PyTorch, TensorFlow).</li><li>Глубокое понимание архитектур Трансформеров и их вариантов.</li>" },
+                        { title: "Научный сотрудник в области ИИ", responsibilities_title: "Обязанности:", qualifications_title: "Квалификация:", responsibilities: "<li>Проведение фундаментальных и прикладных исследований для расширения границ ИИ.</li><li>Публикация результатов на ведущих конференциях и в журналах.</li><li>Наставничество над младшими исследователями и сотрудничество с научным сообществом.</li>", qualifications: "<li>Кандидатская степень в соответствующей области с сильным списком публикаций.</li><li>Глубокие знания в области машинного обучения, НЛП или компьютерного зрения.</li><li>Владение Python и соответствующими научными библиотеками.</li>" },
+                        { title: "Инженер облачной инфраструктуры", responsibilities_title: "Обязанности:", qualifications_title: "Квалификация:", responsibilities: "<li>Проектирование, создание и поддержка нашей облачной платформы для крупномасштабного обучения и инференса ИИ.</li><li>Обеспечение высокой доступности, безопасности и масштабируемости инфраструктуры.</li><li>Разработка инструментов автоматизации для оптимизации развертывания и операционных процессов.</li>", qualifications: "<li>Опыт создания инфраструктуры на крупных облачных платформах (AWS, GCP, Azure).</li><li>Владение технологиями контейнеризации (Docker, Kubernetes).</li><li>Опыт работы с инструментами «Инфраструктура как код» (IaC), такими как Terraform или Ansible.</li>" }
+                    ],
+                    careers_apply: "Заинтересованы? Отправьте свое резюме по адресу: <a href='mailto:careers@91tv.news' class='accent-blue font-medium hover:underline'>careers@91tv.news</a>",
+                    footer_sol1: "Аналитика", footer_sol2: "Автоматизация", footer_comp1: "О нас", footer_comp2: "Карьера", footer_res1: "Блог", footer_res2: "Документация", footer_legal1: "Конфиденциальность", footer_legal2: "Условия",
+                }
+            };
+            
+            const switchLanguage = (lang) => {
+                if (!translations[lang]) return;
+                currentLang = lang;
+                const langData = translations[lang];
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-lang-key]').forEach(el => {
+                    const key = el.dataset.langKey;
+                    if (langData[key]) el.innerHTML = langData[key];
+                });
+                document.title = langData.page_title;
+                document.getElementById('current-lang-text').textContent = lang.toUpperCase();
+                renderJobTabs();
+            };
+
+            const renderJobTabs = () => {
+                const jobTabsContainer = document.getElementById('job-tabs');
+                const jobContentContainer = document.getElementById('job-content');
+                const langData = translations[currentLang];
+                
+                jobTabsContainer.innerHTML = '';
+                langData.jobs.forEach((job, index) => {
+                    const tab = document.createElement('button');
+                    tab.className = `job-tab ${index === 0 ? 'active' : ''}`;
+                    tab.textContent = job.title;
+                    tab.dataset.jobIndex = index;
+                    jobTabsContainer.appendChild(tab);
+                });
+
+                const selectJob = (index) => {
+                    const job = langData.jobs[index];
+                    jobContentContainer.innerHTML = `
+                        <div>
+                            <h4 class="font-semibold text-gray-900">${job.responsibilities_title}</h4>
+                            <ul class="list-disc list-inside mt-2 space-y-1 text-gray-600">${job.responsibilities}</ul>
+                        </div>
+                        <div class="mt-6">
+                            <h4 class="font-semibold text-gray-900">${job.qualifications_title}</h4>
+                            <ul class="list-disc list-inside mt-2 space-y-1 text-gray-600">${job.qualifications}</ul>
+                        </div>`;
+                    
+                    jobTabsContainer.querySelectorAll('.job-tab').forEach((tab, i) => {
+                        tab.classList.toggle('active', i === index);
+                    });
+                };
+
+                jobTabsContainer.querySelectorAll('.job-tab').forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        selectJob(parseInt(tab.dataset.jobIndex));
+                    });
+                });
+                
+                // Initial selection
+                if (langData.jobs.length > 0) {
+                    selectJob(0);
+                }
+            };
+
+            const setupScrollAnimation = () => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                             entry.target.classList.add('is-visible');
+                        }
+                    });
+                }, { threshold: 0.1 });
+                document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+            };
+
+            const langSwitcherButton = document.getElementById('lang-switcher-button');
+            const langDropdownMenu = document.getElementById('lang-dropdown-menu');
+            langSwitcherButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                langDropdownMenu.classList.toggle('hidden');
+                setTimeout(() => {
+                     langDropdownMenu.classList.toggle('opacity-0');
+                     langDropdownMenu.classList.toggle('scale-95');
+                }, 10);
+            });
+            document.addEventListener('click', (event) => {
+                if (!langSwitcherButton.contains(event.target) && !langDropdownMenu.classList.contains('hidden')) {
+                    langDropdownMenu.classList.add('hidden', 'opacity-0', 'scale-95');
+                }
+            });
+
+            document.querySelectorAll('.dropdown-menu a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); 
+                    switchLanguage(e.target.dataset.lang);
+                    langDropdownMenu.classList.add('hidden', 'opacity-0', 'scale-95');
+                });
+            });
+
+            setupScrollAnimation();
+            switchLanguage(currentLang);
+        });
+    </script>
+</body>
+</html>
